@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="img/Pinturas_Berel logo.png" type="image/x-icon">
+    <title>Berel Angelópolis</title>
+
+<!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            berelRed: '#E41E26',
+            berelDarkRed: '#C21C22', // Slightly darker for better contrast
+            berelBloodRed: '#A61A1F', // Medium dark red tone
+            berelGray: '#4B5563',
+            berelLightGray: '#F9FAFB',
+            berelAccentYellow: '#FFD700', 
+          },
+          animation: {
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+            'fade-in': 'fade-in 0.6s ease-out forwards',
+            'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
+            'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
+            'zoom-in': 'zoom-in 0.6s ease-out forwards',
+            'pulse-once': 'pulse 1s ease-out 1', 
+            'pulse-hover': 'pulse 1s infinite', // For continuous pulse on hover
+          },
+          keyframes: {
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'fade-in': {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            'slide-in-left': {
+              '0%': { opacity: '0', transform: 'translateX(-20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            'slide-in-right': {
+              '0%': { opacity: '0', transform: 'translateX(20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            'zoom-in': {
+                '0%': { opacity: '0', transform: 'scale(0.9)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            pulse: { 
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.03)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .animate-delay-100 { animation-delay: 0.1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-300 { animation-delay: 0.3s; }
+    .animate-delay-400 { animation-delay: 0.4s; }
+    .animate-delay-500 { animation-delay: 0.5s; }
+    .animate-delay-600 { animation-delay: 0.6s; }
+    .group:hover .group-hover\:translate-y-[-5px] { transform: translateY(-5px); }
+  </style>
+
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+<!-- NAVBAR -->
+<nav class="bg-white p-4 shadow-lg sticky top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto flex justify-between items-center max-w-7xl px-4">
+    <a href="#hero" class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-1">
+        <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635512970-2ou05g.png" alt="Berel Angelópolis Logo" class="h-10 sm:h-12 w-auto">
+        <span class="text-xl sm:text-2xl font-extrabold text-gray-900 hidden sm:block">Berel Angelópolis</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex space-x-8 font-semibold text-lg">
+      <li><a href="#about" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Nosotros</a></li>
+      <li><a href="#testimonials" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Reseñas</a></li>
+      <li><a href="#branches-feedback" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Sucursales</a></li>
+      <li><a href="#contact" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Contacto</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button" aria-label="Toggle mobile menu" aria-expanded="false" class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-2 transition duration-300">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white shadow-inner py-4 mt-2 absolute w-full left-0 z-40 animate-fade-in">
+    <ul class="flex flex-col items-center space-y-4 font-medium text-lg">
+      <li><a href="#about" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Nosotros</a></li>
+      <li><a href="#testimonials" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Reseñas</a></li>
+      <li><a href="#branches-feedback" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Sucursales</a></li>
+      <li><a href="#contact" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="relative py-24 md:py-32 lg:py-48 bg-berelBloodRed text-white overflow-hidden">
+  <div class="container mx-auto text-center relative z-10 max-w-4xl px-4">
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight animate-fade-in-up">
+      <span class="inline-block text-white">Transforma tus Espacios con</span>
+      <span class="block mt-4 text-gray-900">Berel Angelópolis</span>
+    </h1>
+    <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-up animate-delay-100">
+      Productos de pintura de alta calidad, atención experta y servicio profesional para todos tus proyectos en Puebla.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up animate-delay-200">
+      <a href="#about"
+         class="inline-flex items-center bg-white text-berelRed px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 ease-in-out group focus:outline-none focus:ring-2 focus:ring-white">
+        <i class="fas fa-palette mr-3 group-hover:rotate-6 transition-transform duration-300"></i> Descubre Quiénes Somos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about" class="py-16 lg:py-24 bg-white">
+  <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl px-4">
+    <div class="order-2 md:order-1 animate-slide-in-left">
+      <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3">Conócenos</p>
+      <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+        Más que una tienda de pintura, <span class="text-berelRed">tu aliado en color</span>
+      </h2>
+      <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+        En Berel Angelópolis, somos tu destino para transformar cualquier espacio. Ofrecemos la más amplia gama de productos de pintura Berel, desde colores vibrantes hasta recubrimientos especializados, garantizando calidad y durabilidad en cada gota.
+      </p>
+      <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+        Nuestro equipo de expertos te brindará asesoría personalizada, ayudándote a elegir el producto perfecto y las herramientas adecuadas para hacer realidad tus proyectos, grandes o pequeños.
+      </p>
+      <a href="#contact" class="inline-block bg-berelRed text-white px-7 py-3 rounded-full font-bold text-md shadow-md hover:bg-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <i class="fas fa-phone mr-2"></i> Contáctanos
+      </a>
+    </div>
+    <div class="order-1 md:order-2 animate-slide-in-right">
+      <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635557898-rqd5dc.png" alt="Interior de la tienda Berel Angelópolis con amplia gama de colores" class="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[500px]">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-16 lg:py-24 bg-white">
+  <div class="container mx-auto text-center max-w-7xl px-4">
+    <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3 animate-fade-in-up">La Voz de Nuestros Clientes</p>
+    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-12 leading-tight animate-fade-in-up animate-delay-100">
+      Lo que dicen nuestros <span class="text-berelDarkRed">Clientes Satisfechos</span>
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial Card 1 -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-200">
+        <div class="flex items-center justify-center mb-4">
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow"></i>
+        </div>
+        <p class="text-lg text-gray-700 mb-6 italic">"Excelente atención y gran variedad de productos. Siempre encuentro lo que necesito y la asesoría es de primera. ¡Mi tienda de pintura favorita en Puebla!"</p>
+        <div class="flex items-center justify-center">
+          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635579753-ln07xk.jpeg" alt="Avatar de Mateo Conde, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+          <div>
+            <p class="font-semibold text-gray-900">Mateo Conde</p>
+            <p class="text-sm text-gray-600">Cliente Satisfecho</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-300">
+        <div class="flex items-center justify-center mb-4">
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow"></i>
+        </div>
+        <p class="text-lg text-gray-700 mb-6 italic">"Necesitaba un color muy específico y lo encontré aquí. El personal me ayudó a elegir la mejor opción para mi proyecto y el resultado fue perfecto. ¡Muy recomendados!"</p>
+        <div class="flex items-center justify-center">
+          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635601358-yf35cu.jpeg" alt="Avatar de María González, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+          <div>
+            <p class="font-semibold text-gray-900">María González</p>
+            <p class="text-sm text-gray-600">Diseñadora de Interiores</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-400">
+        <div class="flex items-center justify-center mb-4">
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+          <i class="fas fa-star text-berelAccentYellow"></i>
+        </div>
+        <p class="text-lg text-gray-700 mb-6 italic">"Siempre compro mis pinturas aquí. La calidad es inigualable y la durabilidad de los productos Berel es lo que busco para mis trabajos de construcción."</p>
+        <div class="flex items-center justify-center">
+          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635620559-lh5pnfq.jpeg" alt="Avatar de Carlos Ramírez, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+          <div>
+            <p class="font-semibold text-gray-900">Carlos Ramírez</p>
+            <p class="text-sm text-gray-600">Contratista</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES FEEDBACK -->
+<section id="branches-feedback" class="py-16 lg:py-24 bg-berelDarkRed">
+  <div class="container mx-auto text-center max-w-7xl px-4">
+    <p class="text-white font-semibold text-sm uppercase mb-3 animate-fade-in-up">Tu Experiencia Cuenta</p>
+    <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-12 leading-tight animate-fade-in-up animate-delay-100">
+      Déjanos tu opinión en <span class="text-gray-900">Nuestras Sucursales</span>
+    </h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Branch Button 1 -->
+      <a href="https://berel-tu-experiencia-cuenta-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-200 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Niño Poblano</h3>
+        <p class="text-gray-700">Danos tu opinión</p>
+      </a>
+
+      <!-- Branch Button 2 -->
+      <a href="https://berel-angel-polis-tu-experiencia-cu.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Angelópolis</h3>
+        <p class="text-gray-700">Danos tu opinión</p>
+      </a>
+
+      <!-- Branch Button 3 -->
+      <a href="https://berel-zavaleta-tu-experiencia-cuent.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-400 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Zavaleta</h3>
+        <p class="text-gray-700">Danos tu opinión</p>
+      </a>
+
+      <!-- Branch Button 4 -->
+      <a href="https://berel-cholula-tu-voz-cuenta-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-500 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel San Pedro Cholula</h3>
+        <p class="text-gray-700">Danos tu opinión</p>
+      </a>
+
+      <!-- Branch Button 5 -->
+      <a href="https://berel-feedback-hub-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-600 focus:outline-none focus:ring-2 focus:ring-berelRed">
+        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Tepontla</h3>
+        <p class="text-gray-700">Danos tu opinión</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-16 lg:py-24 bg-white">
+  <div class="container mx-auto text-center max-w-7xl px-4">
+    <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3 animate-fade-in-up">Estamos Aquí para Ayudarte</p>
+    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-12 leading-tight animate-fade-in-up animate-delay-100">
+      Ponte en <span class="text-berelDarkRed">Contacto</span>
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Phone Contact -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-200">
+        <a href="tel:+522223074541" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-phone-alt"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Llámanos</h3>
+          <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">+52 222 307 4541</span>
+        </a>
+        <p class="text-gray-600 mt-2">Lunes a Viernes: 9 AM - 6 PM</p>
+        <p class="text-gray-600">Sábados: 9 AM - 2 PM</p>
+      </div>
+
+      <!-- Email Contact -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-300">
+        <a href="mailto:berel.angelopolis@gmail.com" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-envelope"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Envíanos un Correo</h3>
+          <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">berel.angelopolis@gmail.com</span>
+        </a>
+        <p class="text-gray-600 mt-2">Respondemos en menos de 24 horas</p>
+      </div>
+
+      <!-- Location Contact -->
+      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-400">
+        <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-map-marker-alt"></i></div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Visítanos</h3>
+          <address class="not-italic text-berelGray text-lg font-semibold mb-4">Blvd. Atlixco 3110, <br>San Miguel La Rosa, 72410 Puebla, Pue.</address>
+        </a>
+        <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-berelDarkRed hover:underline transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
+          <i class="fas fa-directions mr-2"></i> Obtener Direcciones
+        </a>
+      </div>
+    </div>
+
+    <!-- Map Embed -->
+    <div class="mt-16 animate-zoom-in animate-delay-500">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.3330693952766!2d-98.24151708891602!3d19.006901882194637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc7940e5bb947%3A0xc076ec6a1f868d40!2sBlvd.%20Atlixco%203110%2C%20San%20Miguel%20La%20Rosa%2C%2072410%20Puebla%2C%20Pue.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+        width="100%" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        class="rounded-xl shadow-2xl border-2 border-berelDarkRed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-10 text-center">
+  <div class="container mx-auto max-w-7xl px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+      <p class="mb-4 md:mb-0 text-sm md:text-base">&copy; <span id="current-year"></span> Berel Angelópolis. Todos los derechos reservados.</p>
+      <div class="flex space-x-6">
+        <a href="https://www.facebook.com/BerelAngelopolisPuebla" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
+        <a href="https://www.instagram.com/berelangelopolis/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+        <a href="https://wa.me/522223074541" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
+      </div>
+    </div>
+    <div class="text-sm text-gray-500 mt-4 border-t border-gray-800 pt-6">
+      <ul class="flex justify-center space-x-4 sm:space-x-6 flex-wrap gap-y-2">
+        <li><a href="#about" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Nosotros</a></li>
+        <li><a href="#testimonials" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Reseñas</a></li>
+        <li><a href="#branches-feedback" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Sucursales</a></li>
+        <li><a href="#contact" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for Mobile Menu and Footer Year -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+      // Change icon for accessibility feedback
+      const icon = mobileMenuButton.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times'); // Using 'times' for open, 'bars' for closed
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        const icon = mobileMenuButton.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Update footer year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  });
+</script>
+</body>
+</html>
