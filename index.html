@@ -1,420 +1,1925 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/Pinturas_Berel logo.png" type="image/x-icon">
     <title>Berel Angelópolis</title>
 
-<!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            berelRed: '#E41E26',
-            berelDarkRed: '#C21C22', // Slightly darker for better contrast
-            berelBloodRed: '#A61A1F', // Medium dark red tone
-            berelGray: '#4B5563',
-            berelLightGray: '#F9FAFB',
-            berelAccentYellow: '#FFD700', 
-          },
-          animation: {
-            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-            'fade-in': 'fade-in 0.6s ease-out forwards',
-            'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
-            'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
-            'zoom-in': 'zoom-in 0.6s ease-out forwards',
-            'pulse-once': 'pulse 1s ease-out 1', 
-            'pulse-hover': 'pulse 1s infinite', // For continuous pulse on hover
-          },
-          keyframes: {
-            'fade-in-up': {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            'fade-in': {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            'slide-in-left': {
-              '0%': { opacity: '0', transform: 'translateX(-20px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
-            },
-            'slide-in-right': {
-              '0%': { opacity: '0', transform: 'translateX(20px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
-            },
-            'zoom-in': {
-                '0%': { opacity: '0', transform: 'scale(0.9)' },
-                '100%': { opacity: '1', transform: 'scale(1)' },
-            },
-            pulse: { 
-              '0%, 100%': { transform: 'scale(1)' },
-              '50%': { transform: 'scale(1.03)' },
-            },
-          },
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        berelRed: '#E41E26',
+                        berelDarkRed: '#C21C22',
+                        berelBloodRed: '#A61A1F',
+                        berelGray: '#4B5563',
+                        berelLightGray: '#F9FAFB',
+                        berelAccentYellow: '#FFD700',
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+                        'fade-in': 'fade-in 0.6s ease-out forwards',
+                        'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
+                        'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
+                        'zoom-in': 'zoom-in 0.6s ease-out forwards',
+                        'pulse-once': 'pulse 1s ease-out 1',
+                        'pulse-hover': 'pulse 1s infinite',
+                        'slide-in': 'slide-in 0.5s ease-out forwards',
+                        'slide-out': 'slide-out 0.5s ease-out forwards',
+                        'fade-in-down': 'fade-in-down 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'fade-in-down': {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        'slide-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'slide-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'slide-in': {
+                            '0%': { opacity: '0', transform: 'translateX(100%)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'slide-out': {
+                            '0%': { opacity: '1', transform: 'translateX(0)' },
+                            '100%': { opacity: '0', transform: 'translateX(-100%)' },
+                        },
+                        'zoom-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        pulse: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.03)' },
+                        },
+                    },
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Google Fonts: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; }
-    .animate-delay-100 { animation-delay: 0.1s; }
-    .animate-delay-200 { animation-delay: 0.2s; }
-    .animate-delay-300 { animation-delay: 0.3s; }
-    .animate-delay-400 { animation-delay: 0.4s; }
-    .animate-delay-500 { animation-delay: 0.5s; }
-    .animate-delay-600 { animation-delay: 0.6s; }
-    .group:hover .group-hover\:translate-y-[-5px] { transform: translateY(-5px); }
-  </style>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+        .animate-delay-900 { animation-delay: 0.9s; }
+        .animate-delay-1000 { animation-delay: 1s; }
+        .group:hover .group-hover\:translate-y-[-5px] { transform: translateY(-5px); }
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2H71674C5S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        /* SPA Navigation Styles */
+        .view {
+            display: none;
+        }
+        
+        .view.active {
+            display: block;
+            animation: fade-in 0.5s ease-out forwards;
+        }
+        
+        /* Active nav link style */
+        .nav-link.active {
+            color: #E41E26;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #E41E26;
+            border-radius: 3px;
+        }
+        
+        /* Feedback cards grid */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Custom animations for icons */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .group-hover\:animate-pulse:hover .fa-star,
+        .group-hover\:animate-pulse:hover .fa-envelope {
+            animation: pulse 1s infinite;
+        }
 
-  gtag('config', 'G-2H71674C5S');
-</script>
+        @keyframes wiggle {
+            0%, 7% { transform: rotateZ(0); }
+            15% { transform: rotateZ(-15deg); }
+            20% { transform: rotateZ(10deg); }
+            25% { transform: rotateZ(-10deg); }
+            30% { transform: rotateZ(6deg); }
+            35% { transform: rotateZ(-4deg); }
+            40%, 100% { transform: rotateZ(0); }
+        }
+        .group-hover\:animate-wiggle:hover .fa-phone {
+            animation: wiggle 2s infinite;
+        }
 
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .group-hover\:animate-spin-slow:hover .fa-google {
+            animation: spin-slow 3s linear infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .group-hover\:animate-bounce:hover .fa-edit {
+            animation: bounce 0.6s infinite;
+        }
+
+        /* Keyframes for simple animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease-out forwards;
+            opacity: 0;
+            animation-play-state: paused;
+        }
+        
+        /* Para asegurar que los botones sean visibles en todos los modos */
+        button, a {
+            cursor: pointer;
+        }
+        
+        /* Estilos específicos para las landing pages */
+        .landing-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+        
+        /* Fix para imágenes responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
 
-<!-- NAVBAR -->
-<nav class="bg-white p-4 shadow-lg sticky top-0 z-50 transition-all duration-300">
-  <div class="container mx-auto flex justify-between items-center max-w-7xl px-4">
-    <a href="#hero" class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-1">
-        <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635512970-2ou05g.png" alt="Berel Angelópolis Logo" class="h-10 sm:h-12 w-auto">
-        <span class="text-xl sm:text-2xl font-extrabold text-gray-900 hidden sm:block">Berel Angelópolis</span>
-    </a>
+    <!-- NAVBAR PRINCIPAL (para todas las vistas) -->
+    <nav id="main-navbar" class="bg-white p-4 shadow-lg sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center max-w-7xl px-4">
+            <!-- Logo como enlace a home -->
+            <button id="go-home" class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-1 bg-transparent border-none cursor-pointer">
+                <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635512970-2ou05g.png" alt="Berel Angelópolis Logo" class="h-10 sm:h-12 w-auto">
+                <span class="text-xl sm:text-2xl font-extrabold text-gray-900 hidden sm:block">Berel Angelópolis</span>
+            </button>
 
-    <!-- Desktop Menu -->
-    <ul class="hidden lg:flex space-x-8 font-semibold text-lg">
-      <li><a href="#about" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Nosotros</a></li>
-      <li><a href="#testimonials" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Reseñas</a></li>
-      <li><a href="#branches-feedback" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Sucursales</a></li>
-      <li><a href="#contact" class="text-gray-700 hover:text-gray-900 transition duration-300 py-2 px-1 relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-berelDarkRed before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-berelRed rounded">Contacto</a></li>
-    </ul>
+            <!-- Desktop Navigation - TRES OPCIONES AL MISMO NIVEL -->
+            <ul class="hidden lg:flex space-x-8 font-semibold text-lg">
+                <li><button data-view="home" class="text-gray-700 hover:text-berelRed transition duration-300 py-2 px-1 nav-link active">Inicio</button></li>
+                <li><button data-view="feedback-hub" class="text-gray-700 hover:text-berelRed transition duration-300 py-2 px-1 nav-link">Tu Experiencia</button></li>
+                <li><button data-view="contact" class="text-gray-700 hover:text-berelRed transition duration-300 py-2 px-1 nav-link">Contacto</button></li>
+            </ul>
 
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" aria-label="Toggle mobile menu" aria-expanded="false" class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-2 transition duration-300">
-      <i class="fas fa-bars text-2xl"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="lg:hidden hidden bg-white shadow-inner py-4 mt-2 absolute w-full left-0 z-40 animate-fade-in">
-    <ul class="flex flex-col items-center space-y-4 font-medium text-lg">
-      <li><a href="#about" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Nosotros</a></li>
-      <li><a href="#testimonials" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Reseñas</a></li>
-      <li><a href="#branches-feedback" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Sucursales</a></li>
-      <li><a href="#contact" class="block py-2 text-gray-700 hover:text-gray-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2">Contacto</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero" class="relative py-24 md:py-32 lg:py-48 bg-berelBloodRed text-white overflow-hidden">
-  <div class="container mx-auto text-center relative z-10 max-w-4xl px-4">
-    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight animate-fade-in-up">
-      <span class="inline-block text-white">Transforma tus Espacios con</span>
-      <span class="block mt-4 text-gray-900">Berel Angelópolis</span>
-    </h1>
-    <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-up animate-delay-100">
-      Productos de pintura de alta calidad, atención experta y servicio profesional para todos tus proyectos en Puebla.
-    </p>
-
-    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up animate-delay-200">
-      <a href="#about"
-         class="inline-flex items-center bg-white text-berelRed px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 ease-in-out group focus:outline-none focus:ring-2 focus:ring-white">
-        <i class="fas fa-palette mr-3 group-hover:rotate-6 transition-transform duration-300"></i> Descubre Quiénes Somos
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT US -->
-<section id="about" class="py-16 lg:py-24 bg-white">
-  <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl px-4">
-    <div class="order-2 md:order-1 animate-slide-in-left">
-      <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3">Conócenos</p>
-      <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Más que una tienda de pintura, <span class="text-berelRed">tu aliado en color</span>
-      </h2>
-      <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-        En Berel Angelópolis, somos tu destino para transformar cualquier espacio. Ofrecemos la más amplia gama de productos de pintura Berel, desde colores vibrantes hasta recubrimientos especializados, garantizando calidad y durabilidad en cada gota.
-      </p>
-      <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-        Nuestro equipo de expertos te brindará asesoría personalizada, ayudándote a elegir el producto perfecto y las herramientas adecuadas para hacer realidad tus proyectos, grandes o pequeños.
-      </p>
-      <a href="#contact" class="inline-block bg-berelRed text-white px-7 py-3 rounded-full font-bold text-md shadow-md hover:bg-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <i class="fas fa-phone mr-2"></i> Contáctanos
-      </a>
-    </div>
-    <div class="order-1 md:order-2 animate-slide-in-right">
-      <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635557898-rqd5dc.png" alt="Interior de la tienda Berel Angelópolis con amplia gama de colores" class="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[500px]">
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="py-16 lg:py-24 bg-white">
-  <div class="container mx-auto text-center max-w-7xl px-4">
-    <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3 animate-fade-in-up">La Voz de Nuestros Clientes</p>
-    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-12 leading-tight animate-fade-in-up animate-delay-100">
-      Lo que dicen nuestros <span class="text-berelDarkRed">Clientes Satisfechos</span>
-    </h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Testimonial Card 1 -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-200">
-        <div class="flex items-center justify-center mb-4">
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow"></i>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" aria-label="Toggle mobile menu" aria-expanded="false" class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-berelRed rounded-md p-2 transition duration-300">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
-        <p class="text-lg text-gray-700 mb-6 italic">"Excelente atención y gran variedad de productos. Siempre encuentro lo que necesito y la asesoría es de primera. ¡Mi tienda de pintura favorita en Puebla!"</p>
-        <div class="flex items-center justify-center">
-          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635579753-ln07xk.jpeg" alt="Avatar de Mateo Conde, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
-          <div>
-            <p class="font-semibold text-gray-900">Mateo Conde</p>
-            <p class="text-sm text-gray-600">Cliente Satisfecho</p>
-          </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white shadow-inner py-4 mt-2 absolute w-full left-0 z-40">
+            <ul class="flex flex-col items-center space-y-4 font-medium text-lg">
+                <li><button data-view="home" class="block py-2 text-gray-700 hover:text-berelRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2 nav-link active">Inicio</button></li>
+                <li><button data-view="feedback-hub" class="block py-2 text-gray-700 hover:text-berelRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2 nav-link">Tu Experiencia</button></li>
+                <li><button data-view="contact" class="block py-2 text-gray-700 hover:text-berelRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-2 nav-link">Contacto</button></li>
+            </ul>
         </div>
-      </div>
+    </nav>
 
-      <!-- Testimonial Card 2 -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-300">
-        <div class="flex items-center justify-center mb-4">
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow"></i>
+    <!-- ============================================= -->
+    <!-- VISTA 1: HOME (Berel Angelópolis Principal) -->
+    <!-- ============================================= -->
+    <div id="home-view" class="view active">
+        <!-- HERO -->
+        <section class="relative py-24 md:py-32 lg:py-48 bg-berelBloodRed text-white overflow-hidden">
+            <div class="container mx-auto text-center relative z-10 max-w-4xl px-4">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight animate-fade-in-up">
+                    <span class="inline-block text-white">Transforma tus Espacios con</span>
+                    <span class="block mt-4 text-gray-900">Berel Angelópolis</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-up animate-delay-100">
+                    Productos de pintura de alta calidad, atención experta y servicio profesional para todos tus proyectos en Puebla.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up animate-delay-200">
+                    <button data-view="feedback-hub" class="inline-flex items-center bg-white text-berelRed px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 ease-in-out group focus:outline-none focus:ring-2 focus:ring-white cursor-pointer">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow"></i> Comparte tu Experiencia
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US -->
+        <section class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl px-4">
+                <div class="order-2 md:order-1 animate-slide-in-left">
+                    <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3">Conócenos</p>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        Más que una tienda de pintura, <span class="text-berelRed">tu aliado en color</span>
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        En Berel Angelópolis, somos tu destino para transformar cualquier espacio. Ofrecemos la más amplia gama de productos de pintura Berel, desde colores vibrantes hasta recubrimientos especializados, garantizando calidad y durabilidad en cada gota.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Nuestro equipo de expertos te brindará asesoría personalizada, ayudándote a elegir el producto perfecto y las herramientas adecuadas para hacer realidad tus proyectos, grandes o pequeños.
+                    </p>
+                    <button data-view="feedback-hub" class="inline-block bg-berelRed text-white px-7 py-3 rounded-full font-bold text-md shadow-md hover:bg-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed cursor-pointer">
+                        <i class="fas fa-comment-alt mr-2"></i> Déjanos tu Opinión
+                    </button>
+                </div>
+                <div class="order-1 md:order-2 animate-slide-in-right">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635557898-rqd5dc.png" alt="Interior de la tienda Berel Angelópolis con amplia gama de colores" class="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[500px]">
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto text-center max-w-7xl px-4">
+                <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3 animate-fade-in-up">La Voz de Nuestros Clientes</p>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-12 leading-tight animate-fade-in-up animate-delay-100">
+                    Lo que dicen nuestros <span class="text-berelDarkRed">Clientes Satisfechos</span>
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-200">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow"></i>
+                        </div>
+                        <p class="text-lg text-gray-700 mb-6 italic">"Excelente atención y gran variedad de productos. Siempre encuentro lo que necesito y la asesoría es de primera. ¡Mi tienda de pintura favorita en Puebla!"</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635579753-ln07xk.jpeg" alt="Avatar de Mateo Conde, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+                            <div>
+                                <p class="font-semibold text-gray-900">Mateo Conde</p>
+                                <p class="text-sm text-gray-600">Cliente Satisfecho</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-300">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow"></i>
+                        </div>
+                        <p class="text-lg text-gray-700 mb-6 italic">"Necesitaba un color muy específico y lo encontré aquí. El personal me ayudó a elegir la mejor opción para mi proyecto y el resultado fue perfecto. ¡Muy recomendados!"</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635601358-yf35cu.jpeg" alt="Avatar de María González, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+                            <div>
+                                <p class="font-semibold text-gray-900">María González</p>
+                                <p class="text-sm text-gray-600">Diseñadora de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-400">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow mr-1"></i>
+                            <i class="fas fa-star text-berelAccentYellow"></i>
+                        </div>
+                        <p class="text-lg text-gray-700 mb-6 italic">"Siempre compro mis pinturas aquí. La calidad es inigualable y la durabilidad de los productos Berel es lo que busco para mis trabajos de construcción."</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635620559-lh5pnfq.jpeg" alt="Avatar de Carlos Ramírez, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
+                            <div>
+                                <p class="font-semibold text-gray-900">Carlos Ramírez</p>
+                                <p class="text-sm text-gray-600">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- VISTA 2: FEEDBACK HUB (Tu Experiencia) -->
+    <!-- ============================================= -->
+    <div id="feedback-hub-view" class="view">
+        <!-- Hero del Feedback Hub -->
+        <section class="relative py-20 md:py-28 bg-berelDarkRed text-white overflow-hidden">
+            <div class="container mx-auto text-center relative z-10 max-w-6xl px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight animate-fade-in-up">
+                    <span class="inline-block text-white">Tu Experiencia</span>
+                    <span class="block mt-4 text-gray-900">Cuenta Mucho</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-up animate-delay-100">
+                    Selecciona tu sucursal y déjanos saber cómo fue tu experiencia. Tu opinión nos ayuda a mejorar.
+                </p>
+            </div>
+        </section>
+
+        <!-- Grid con las 5 landing pages de feedback -->
+        <section class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto max-w-7xl px-4">
+                <div class="feedback-grid">
+                    <!-- Card 1: Berel Niño Poblano -->
+                    <div class="bg-berelLightGray p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-200">
+                        <div class="text-berelDarkRed text-5xl mb-6 text-center">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Berel Niño Poblano</h3>
+                        <p class="text-gray-600 mb-6 text-center">Blvd Atlixco 3101, Las Ánimas, Puebla</p>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col space-y-3">
+                            <button data-view="nino-poblano-feedback" class="w-full bg-berelRed text-white py-3 rounded-lg font-semibold hover:bg-berelDarkRed transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> Dejar mi Reseña
+                            </button>
+                            <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener" class="w-full border border-berelRed text-berelRed py-3 rounded-lg font-semibold hover:bg-berelRed hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Ver en Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Berel Angelópolis -->
+                    <div class="bg-berelLightGray p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-300">
+                        <div class="text-berelDarkRed text-5xl mb-6 text-center">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Berel Angelópolis</h3>
+                        <p class="text-gray-600 mb-6 text-center">Calle Mira 213, Paseos de San Andrés, Puebla</p>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col space-y-3">
+                            <button data-view="angelopolis-feedback" class="w-full bg-berelRed text-white py-3 rounded-lg font-semibold hover:bg-berelDarkRed transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> Dejar mi Reseña
+                            </button>
+                            <a href="https://maps.app.goo.gl/6RPXLKn5kaddy3Tz5" target="_blank" rel="noopener" class="w-full border border-berelRed text-berelRed py-3 rounded-lg font-semibold hover:bg-berelRed hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Ver en Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Berel Zavaleta -->
+                    <div class="bg-berelLightGray p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="text-berelDarkRed text-5xl mb-6 text-center">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Berel Zavaleta</h3>
+                        <p class="text-gray-600 mb-6 text-center">Carr Federal a Atlixco km. 2.5 2514, San Andrés Cholula, Pue.</p>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col space-y-3">
+                            <button data-view="zavaleta-feedback" class="w-full bg-berelRed text-white py-3 rounded-lg font-semibold hover:bg-berelDarkRed transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> Dejar mi Reseña
+                            </button>
+                            <a href="https://maps.app.goo.gl/Fk9v955rQ6W9B15e8" target="_blank" rel="noopener" class="w-full border border-berelRed text-berelRed py-3 rounded-lg font-semibold hover:bg-berelRed hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Ver en Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Berel San Pedro Cholula -->
+                    <div class="bg-berelLightGray p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-500">
+                        <div class="text-berelDarkRed text-5xl mb-6 text-center">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Berel San Pedro Cholula</h3>
+                        <p class="text-gray-600 mb-6 text-center">Av Miguel Hidalgo 1205, San Pedro Cholula, Pue.</p>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col space-y-3">
+                            <button data-view="cholula-feedback" class="w-full bg-berelRed text-white py-3 rounded-lg font-semibold hover:bg-berelDarkRed transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> Dejar mi Reseña
+                            </button>
+                            <a href="https://maps.app.goo.gl/oL1LDeKeHGQeuMmJ8?g_st=iw" target="_blank" rel="noopener" class="w-full border border-berelRed text-berelRed py-3 rounded-lg font-semibold hover:bg-berelRed hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Ver en Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Berel Tepontla -->
+                    <div class="bg-berelLightGray p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="text-berelDarkRed text-5xl mb-6 text-center">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Berel Tepontla - Zerezotla</h3>
+                        <p class="text-gray-600 mb-6 text-center">Av. 2 Poniente, C. 15 Nte. 1326, Cholula de Rivadavia, Pue.</p>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col space-y-3">
+                            <button data-view="tepontla-feedback" class="w-full bg-berelRed text-white py-3 rounded-lg font-semibold hover:bg-berelDarkRed transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> Dejar mi Reseña
+                            </button>
+                            <a href="https://maps.app.goo.gl/GxFHBDwnmb4Ycv2L8?g_st=iw" target="_blank" rel="noopener" class="w-full border border-berelRed text-berelRed py-3 rounded-lg font-semibold hover:bg-berelRed hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Ver en Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- VISTA 3: CONTACTO -->
+    <!-- ============================================= -->
+    <div id="contact-view" class="view">
+        <!-- Hero del Contacto -->
+        <section class="relative py-20 md:py-28 bg-berelBloodRed text-white overflow-hidden">
+            <div class="container mx-auto text-center relative z-10 max-w-6xl px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight animate-fade-in-up">
+                    <span class="inline-block text-white">Contáctanos</span>
+                    <span class="block mt-4 text-gray-900">Estamos para Ayudarte</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-up animate-delay-100">
+                    ¿Tienes preguntas, necesitas asesoría o una cotización? Estamos aquí para ti.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto max-w-7xl px-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Phone Contact -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-200">
+                        <a href="tel:+522223074541" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+                            <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-phone-alt"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">Llámanos</h3>
+                            <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">+52 222 307 4541</span>
+                        </a>
+                        <p class="text-gray-600 mt-2">Lunes a Viernes: 8:30 AM - 6 PM</p>
+                        <p class="text-gray-600">Sábados: 9 AM - 3 PM</p>
+                    </div>
+
+                    <!-- Email Contact -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-300">
+                        <a href="mailto:berel.angelopolis@gmail.com" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+                            <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-envelope"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">Envíanos un Correo</h3>
+                            <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">berel.angelopolis@gmail.com</span>
+                        </a>
+                        <p class="text-gray-600 mt-2">Respondemos en menos de 24 horas</p>
+                    </div>
+
+                    <!-- Location Contact -->
+                    <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-400">
+                        <a href="https://maps.app.goo.gl/6RPXLKn5kaddy3Tz5" target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
+                            <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-map-marker-alt"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">Visítanos</h3>
+                            <address class="not-italic text-berelGray text-lg font-semibold mb-4">
+                                Calle Mira 213, L-12 Plaza, <br>
+                                Carril a San Martinito, Paseos de San Andrés, <br>
+                                72825 Puebla, Pue.
+                            </address>
+                        </a>
+                        <a href="https://maps.app.goo.gl/JoP84WNJFLZPNUDU6" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-berelDarkRed hover:underline transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
+                            <i class="fas fa-directions mr-2"></i> Obtener Direcciones
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Embed -->
+                <div class="mt-16 animate-zoom-in animate-delay-500">
+                    <iframe src="https://www.google.com/maps?q=Pinturas+Berel+Angelópolis+Puebla+2PJV+6M+Paseos+de+San+Andrés+San+Bernardino+Tlaxcalancingo+Calle+Mira+213+L-12+Plaza+Carril+a+San+Martinito+72825+Puebla&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- VISTAS DE FEEDBACK INDIVIDUALES (las 5 landing pages) -->
+    <!-- ============================================= -->
+
+    <!-- 1. BEREL NIÑO POBLANO FEEDBACK -->
+    <div id="nino-poblano-feedback-view" class="view">
+        <!-- Hero Section -->
+        <section class="bg-berelLightGray py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- Hero Text Content -->
+                <div class="order-1 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fade-in">
+                        ¿Cómo fue tu experiencia en <span class="text-berelRed">Berel Niño Poblano-Blvd Atlixco</span>?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-200">
+                        Tu opinión nos ayuda a mejorar y a seguir ofreciéndote el mejor servicio.
+                    </p>
+                    <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group animate-fade-in animate-delay-400">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow group-hover:animate-pulse"></i> Dejar Reseña en Google
+                    </a>
+
+                    <!-- Rating Display -->
+                    <div class="mt-8 bg-white rounded-2xl p-4 inline-flex items-center shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <span class="text-berelAccentYellow text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <strong class="text-2xl font-bold text-gray-800">4.8 / 5</strong>
+                        <span class="text-gray-500 ml-4 hidden sm:inline">Calificación promedio</span>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="order-2 md:order-2">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765913751613-wmbty69.png" alt="Berel Niño Poblano Store" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in animate-delay-800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 text-center bg-white landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Por qué dejar tu reseña?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Tu opinión hace la diferencia y nos ayuda a crecer.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 justify-center">
+                    <!-- Card 1 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="w-16 h-16 rounded-xl bg-berelRed flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ayudas a otros clientes</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Tu experiencia ayuda a otros a tomar mejores decisiones de compra.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Nos permite mejorar</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Identificamos áreas de mejora para ofrecerte un mejor servicio cada día.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-800">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Solo toma 1 minuto</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Es un proceso rápido, sencillo y muy valioso para todo nuestro equipo.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-edit mr-3 text-white group-hover:animate-bounce"></i> Dejar mi Reseña Ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="bg-gradient-to-br from-berelLightGray to-white py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- About Image -->
+                <div class="order-1 md:order-1">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/3ce8a9d7-a8f4-468a-8793-19bbac653b25/1766010528636-lkbyo.png" alt="Team working at Berel" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in">
+                </div>
+                <!-- About Text Content -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in animate-delay-200">
+                        Más que una tienda de pintura
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-400">
+                        Ofrecemos productos de alta calidad y un servicio personalizado que realmente hace la diferencia en cada proyecto.
+                    </p>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-600">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Amplia variedad</strong><br>
+                                <small class="text-gray-600">Encuentra todo lo que necesitas para tu proyecto en un solo lugar.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-700">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Asesoramiento experto</strong><br>
+                                <small class="text-gray-600">Nuestro equipo te guía en cada paso para resultados perfectos.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-800">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-berelAccentYellow flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Calidad garantizada</strong><br>
+                                <small class="text-gray-600">Solo trabajamos con las mejores marcas y productos duraderos.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 bg-berelLightGray text-center landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Historias reales de satisfacción y éxito con Berel Niño Poblano.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-400">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "¡Excelente servicio! Encontré exactamente lo que buscaba y el personal fue muy amable y conocedor. ¡Volveré pronto!"
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914201952-x0mne.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Juan López</p>
+                                <p class="text-sm text-gray-500">Diseñador de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "Siempre encuentro la mejor calidad de pintura en Berel Niño Poblano. Mis proyectos lucen increíbles gracias a sus productos."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914191222-uh6qtx.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">María C. </p>
+                                <p class="text-sm text-gray-500">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-800">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "El asesoramiento que recibí fue invaluable. Me ayudaron a elegir los colores perfectos y los productos adecuados para mi casa."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914300207-mggag.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Ana Dávila</p>
+                                <p class="text-sm text-gray-500">Propietaria de Hogar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/FEdN3m9QXeo2gA4PA?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-google mr-3 text-white group-hover:animate-spin-slow"></i> Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-100 py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto text-center max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Necesitas una Cotización o Tienes Preguntas?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in animate-delay-200">
+                    Contáctanos hoy mismo y nuestro equipo de expertos estará encantado de ayudarte con tu próximo proyecto de pintura.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in animate-delay-400">
+                    <a href="tel:+522223074541" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-green-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-phone mr-3 group-hover:animate-wiggle"></i> Llámanos: +52 222 307 4541
+                    </a>
+                    <a href="mailto:berel.angelopolis@gmail.com" class="inline-flex items-center bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse"></i> Envíanos un Correo
+                    </a>
+                </div>
+
+                <div class="mt-12 text-gray-700 animate-fade-in animate-delay-600">
+                    <p class="text-xl font-semibold mb-2">Visítanos en nuestra sucursal:</p>
+                    <p class="text-lg">📍 Blvd Atlixco 3101, Las Ánimas, 72400 Puebla, Pue.</p>
+                    <a href="https://www.google.com/maps/place/Berel+Ni%C3%B1o+Poblano+Blvd+Atlixco/@19.0347858,-98.2430467,17z/data=!3m1!4b1!4m6!3m5!1s0x85cfc7dfd99e563b:0x89e933f789d36329!8m2!3d19.0347807!4d-98.2404718!16s%2Fg%2F11c6k7d39d?entry=ttu" target="_blank" rel="noopener" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 mt-4 inline-block group">
+                        Ver en Google Maps <i class="fas fa-map-marker-alt ml-2 group-hover:text-berelDarkRed transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 2. BEREL ANGELÓPOLIS FEEDBACK -->
+    <div id="angelopolis-feedback-view" class="view">
+        <!-- Hero Section -->
+        <section class="bg-berelLightGray py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- Hero Text Content -->
+                <div class="order-1 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fade-in">
+                        ¿Cómo fue tu experiencia en <span class="text-berelRed">Berel Angelópolis</span>?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-200">
+                        Tu opinión nos ayuda a mejorar y a seguir ofreciéndote el mejor servicio en productos de pintura. Descubre calidad y atención experta.
+                    </p>
+                    <a href="https://maps.app.goo.gl/uuPv4ZVM9w1p9seY8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group animate-fade-in animate-delay-400">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow group-hover:animate-pulse"></i> Dejar Reseña en Google
+                    </a>
+
+                    <!-- Rating Display -->
+                    <div class="mt-8 bg-white rounded-2xl p-4 inline-flex items-center shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <span class="text-berelAccentYellow text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <strong class="text-2xl font-bold text-gray-800">4.8 / 5</strong>
+                        <span class="text-gray-500 ml-4 hidden sm:inline">Calificación promedio</span>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="order-2 md:order-2">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765913751613-wmbty69.png" alt="Berel Angelópolis Store" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in animate-delay-800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 text-center bg-white landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Por qué dejar tu reseña?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Tu opinión hace la diferencia y nos ayuda a crecer.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 justify-center">
+                    <!-- Card 1 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="w-16 h-16 rounded-xl bg-berelRed flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ayudas a otros clientes</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Tu experiencia ayuda a otros a tomar mejores decisiones de compra.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Nos permite mejorar</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Identificamos áreas de mejora para ofrecerte un mejor servicio cada día.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-800">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Solo toma 1 minuto</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Es un proceso rápido, sencillo y muy valioso para todo nuestro equipo.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/uuPv4ZVM9w1p9seY8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-edit mr-3 text-white group-hover:animate-bounce"></i> Dejar mi Reseña Ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="bg-gradient-to-br from-berelLightGray to-white py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- About Image -->
+                <div class="order-1 md:order-1">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/773750d2-b33d-4966-a9f0-700dbc070c29/1766011914756-vocoho.png" alt="Team working at Berel" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in">
+                </div>
+                <!-- About Text Content -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in animate-delay-200">
+                        Más que una tienda de pintura
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-400">
+                        Ofrecemos productos de alta calidad y un servicio personalizado que realmente hace la diferencia en cada proyecto.
+                    </p>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-600">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Amplia variedad</strong><br>
+                                <small class="text-gray-600">Encuentra todo lo que necesitas para tu proyecto en un solo lugar.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-700">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Asesoramiento experto</strong><br>
+                                <small class="text-gray-600">Nuestro equipo te guía en cada paso para resultados perfectos.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-800">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-berelAccentYellow flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Calidad garantizada</strong><br>
+                                <small class="text-gray-600">Solo trabajamos con las mejores marcas y productos duraderos.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 animate-fade-in animate-delay-900">
+                        <a href="#contact" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 group">
+                            Conoce más sobre nosotros <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 bg-berelLightGray text-center landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Historias reales de satisfacción y éxito con Berel Angelópolis.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-400">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "¡Excelente servicio! Encontré exactamente lo que buscaba y el personal fue muy amable y conocedor. ¡Volveré pronto!"
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914201952-x0mne.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Juan López</p>
+                                <p class="text-sm text-gray-500">Diseñador de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "Siempre encuentro la mejor calidad de pintura en Berel Angelópolis. Mis proyectos lucen increíbles gracias a sus productos."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914191222-uh6qtx.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">María C. </p>
+                                <p class="text-sm text-gray-500">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-800">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "El asesoramiento que recibí fue invaluable. Me ayudaron a elegir los colores perfectos y los productos adecuados para mi casa."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914300207-mggag.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Ana Dávila</p>
+                                <p class="text-sm text-gray-500">Propietaria de Hogar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/uuPv4ZVM9w1p9seY8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-google mr-3 text-white group-hover:animate-spin-slow"></i> Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-100 py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto text-center max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Necesitas una Cotización o Tienes Preguntas?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in animate-delay-200">
+                    Contáctanos hoy mismo y nuestro equipo de expertos estará encantado de ayudarte con tu próximo proyecto de pintura.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in animate-delay-400">
+                    <a href="tel:+522223074541" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-green-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-phone mr-3 group-hover:animate-wiggle"></i> Llámanos: +52 222 307 4541
+                    </a>
+                    <a href="mailto:berel.angelopolis@gmail.com" class="inline-flex items-center bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse"></i> Envíanos un Correo
+                    </a>
+                </div>
+
+                <div class="mt-12 text-gray-700 animate-fade-in animate-delay-600">
+                    <p class="text-xl font-semibold mb-2">Visítanos en nuestra sucursal:</p>
+                    <p class="text-lg">📍 Calle Mira 213, L-12 Plaza, Carril a San Martinito, Paseos de San Andrés, 72825 Pue.</p>
+                    <a href="https://maps.app.goo.gl/uuPv4ZVM9w1p9seY8?g_st=iw" target="_blank" rel="noopener" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 mt-4 inline-block group">
+                        Ver en Google Maps <i class="fas fa-map-marker-alt ml-2 group-hover:text-berelDarkRed transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 3. BEREL ZAVALETA FEEDBACK -->
+    <div id="zavaleta-feedback-view" class="view">
+        <!-- Hero Section -->
+        <section class="bg-berelLightGray py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- Hero Text Content -->
+                <div class="order-1 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fade-in">
+                        ¿Cómo fue tu experiencia en <span class="text-berelRed">Berel Zavaleta</span>?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-200">
+                        Tu opinión nos ayuda a mejorar y a seguir ofreciéndote el mejor servicio en productos de pintura. Descubre calidad y atención experta.
+                    </p>
+                    <a href="https://maps.app.goo.gl/Fk9v955rQ6W9B15e8" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group animate-fade-in animate-delay-400">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow group-hover:animate-pulse"></i> Dejar Reseña en Google
+                    </a>
+
+                    <!-- Rating Display -->
+                    <div class="mt-8 bg-white rounded-2xl p-4 inline-flex items-center shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <span class="text-berelAccentYellow text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <strong class="text-2xl font-bold text-gray-800">4.8 / 5</strong>
+                        <span class="text-gray-500 ml-4 hidden sm:inline">Calificación promedio</span>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="order-2 md:order-2">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765913751613-wmbty69.png" alt="Berel Zavaleta Store" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in animate-delay-800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 text-center bg-white landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Por qué dejar tu reseña?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Tu opinión hace la diferencia y nos ayuda a crecer.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 justify-center">
+                    <!-- Card 1 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="w-16 h-16 rounded-xl bg-berelRed flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ayudas a otros clientes</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Tu experiencia ayuda a otros a tomar mejores decisiones de compra.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Nos permite mejorar</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Identificamos áreas de mejora para ofrecerte un mejor servicio cada día.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-800">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Solo toma 1 minuto</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Es un proceso rápido, sencillo y muy valioso para todo nuestro equipo.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/Fk9v955rQ6W9B15e8" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-edit mr-3 text-white group-hover:animate-bounce"></i> Dejar mi Reseña Ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="bg-gradient-to-br from-berelLightGray to-white py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- About Image -->
+                <div class="order-1 md:order-1">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/773750d2-b33d-4966-a9f0-700dbc070c29/1766011914756-vocoho.png" alt="Team working at Berel" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in">
+                </div>
+                <!-- About Text Content -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in animate-delay-200">
+                        Más que una tienda de pintura
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-400">
+                        Ofrecemos productos de alta calidad y un servicio personalizado que realmente hace la diferencia en cada proyecto.
+                    </p>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-600">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Amplia variedad</strong><br>
+                                <small class="text-gray-600">Encuentra todo lo que necesitas para tu proyecto en un solo lugar.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-700">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Asesoramiento experto</strong><br>
+                                <small class="text-gray-600">Nuestro equipo te guía en cada paso para resultados perfectos.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-800">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-berelAccentYellow flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Calidad garantizada</strong><br>
+                                <small class="text-gray-600">Solo trabajamos con las mejores marcas y productos duraderos.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 animate-fade-in animate-delay-900">
+                        <a href="#contact" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 group">
+                            Conoce más sobre nosotros <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 bg-berelLightGray text-center landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Historias reales de satisfacción y éxito con Berel Zavaleta.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-400">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "¡Excelente servicio! Encontré exactamente lo que buscaba y el personal fue muy amable y conocedor. ¡Volveré pronto!"
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914201952-x0mne.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Juan López</p>
+                                <p class="text-sm text-gray-500">Diseñador de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "Siempre encuentro la mejor calidad de pintura en Berel Zavaleta. Mis proyectos lucen increíbles gracias a sus productos."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914191222-uh6qtx.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">María C. </p>
+                                <p class="text-sm text-gray-500">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-800">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "El asesoramiento que recibí fue invaluable. Me ayudaron a elegir los colores perfectos y los productos adecuados para mi casa."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914300207-mggag.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Ana Dávila</p>
+                                <p class="text-sm text-gray-500">Propietaria de Hogar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/Fk9v955rQ6W9B15e8" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-google mr-3 text-white group-hover:animate-spin-slow"></i> Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-100 py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto text-center max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Necesitas una Cotización o Tienes Preguntas?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in animate-delay-200">
+                    Contáctanos hoy mismo y nuestro equipo de expertos estará encantado de ayudarte con tu próximo proyecto de pintura.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in animate-delay-400">
+                    <a href="tel:+522223074541" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-green-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-phone mr-3 group-hover:animate-wiggle"></i> Llámanos: +52 222 307 4541
+                    </a>
+                    <a href="mailto:berel.angelopolis@gmail.com" class="inline-flex items-center bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse"></i> Envíanos un Correo
+                    </a>
+                </div>
+
+                <div class="mt-12 text-gray-700 animate-fade-in animate-delay-600">
+                    <p class="text-xl font-semibold mb-2">Visítanos en nuestra sucursal:</p>
+                    <p class="text-lg">📍 Carr Federal a Atlixco km. 2.5 2514 Loc. 1 y 2, Reserva Territorial Atlixcáyotl, Concepción la Cruz, 72197 San Andrés Cholula, Pue.</p>
+                    <a href="https://www.google.com/maps/place/Berel+Express+Atlixcayotl/@19.027054,-98.257321,17z/data=!3m1!4b1!4m6!3m5!1s0x85cfc704f58c7e9f:0x2289c02b376c7476!8m2!3d19.027054!4d-98.257321!16s%2Fg%2F11b6j_n19v?entry=ttu" target="_blank" rel="noopener" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 mt-4 inline-block group">
+                        Ver en Google Maps <i class="fas fa-map-marker-alt ml-2 group-hover:text-berelDarkRed transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. BEREL SAN PEDRO CHOLULA FEEDBACK -->
+    <div id="cholula-feedback-view" class="view">
+        <!-- Hero Section -->
+        <section class="bg-berelLightGray py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- Hero Text Content -->
+                <div class="order-1 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fade-in">
+                        ¿Cómo fue tu experiencia en <span class="text-berelRed">Berel San Pedro Cholula</span>?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-200">
+                        Tu opinión nos ayuda a mejorar y a seguir ofreciéndote el mejor servicio en productos de pintura. Descubre calidad y atención experta en San Pedro Cholula.
+                    </p>
+                    <a href="https://maps.app.goo.gl/oL1LDeKeHGQeuMmJ8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group animate-fade-in animate-delay-400">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow group-hover:animate-pulse"></i> Dejar Reseña en Google
+                    </a>
+
+                    <!-- Rating Display -->
+                    <div class="mt-8 bg-white rounded-2xl p-4 inline-flex items-center shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <span class="text-berelAccentYellow text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <strong class="text-2xl font-bold text-gray-800">4.8 / 5</strong>
+                        <span class="text-gray-500 ml-4 hidden sm:inline">Calificación promedio</span>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="order-2 md:order-2">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765913751613-wmbty69.png" alt="Berel San Pedro Cholula Store" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in animate-delay-800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 text-center bg-white landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Por qué dejar tu reseña?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Tu opinión hace la diferencia y nos ayuda a crecer.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 justify-center">
+                    <!-- Card 1 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="w-16 h-16 rounded-xl bg-berelRed flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ayudas a otros clientes</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Tu experiencia ayuda a otros a tomar mejores decisiones de compra.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Nos permite mejorar</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Identificamos áreas de mejora para ofrecerte un mejor servicio cada día.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-800">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Solo toma 1 minuto</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Es un proceso rápido, sencillo y muy valioso para todo nuestro equipo.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/oL1LDeKeHGQeuMmJ8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-edit mr-3 text-white group-hover:animate-bounce"></i> Dejar mi Reseña Ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="bg-gradient-to-br from-berelLightGray to-white py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- About Image -->
+                <div class="order-1 md:order-1">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/773750d2-b33d-4966-a9f0-700dbc070c29/1766011914756-vocoho.png" alt="Team working at Berel" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in">
+                </div>
+                <!-- About Text Content -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in animate-delay-200">
+                        Más que una tienda de pintura
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-400">
+                        Ofrecemos productos de alta calidad y un servicio personalizado que realmente hace la diferencia en cada proyecto.
+                    </p>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-600">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Amplia variedad</strong><br>
+                                <small class="text-gray-600">Encuentra todo lo que necesitas para tu proyecto en un solo lugar.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-700">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Asesoramiento experto</strong><br>
+                                <small class="text-gray-600">Nuestro equipo te guía en cada paso para resultados perfectos.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-800">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-berelAccentYellow flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Calidad garantizada</strong><br>
+                                <small class="text-gray-600">Solo trabajamos con las mejores marcas y productos duraderos.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 animate-fade-in animate-delay-900">
+                        <a href="#contact" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 group">
+                            Conoce más sobre nosotros <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 bg-berelLightGray text-center landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Historias reales de satisfacción y éxito con Berel San Pedro Cholula.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-400">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "¡Excelente servicio! Encontré exactamente lo que buscaba y el personal fue muy amable y conocedor. ¡Volveré pronto!"
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914201952-x0mne.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Juan López</p>
+                                <p class="text-sm text-gray-500">Diseñador de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "Siempre encuentro la mejor calidad de pintura en Berel San Pedro Cholula. Mis proyectos lucen increíbles gracias a sus productos."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914191222-uh6qtx.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">María C. </p>
+                                <p class="text-sm text-gray-500">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-800">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "El asesoramiento que recibí fue invaluable. Me ayudaron a elegir los colores perfectos y los productos adecuados para mi casa."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914300207-mggag.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover">
+                            <div>
+                                <p class="font-bold text-gray-900">Ana Dávila</p>
+                                <p class="text-sm text-gray-500">Propietaria de Hogar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/oL1LDeKeHGQeuMmJ8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-google mr-3 text-white group-hover:animate-spin-slow"></i> Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-100 py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto text-center max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Necesitas una Cotización o Tienes Preguntas?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in animate-delay-200">
+                    Contáctanos hoy mismo y nuestro equipo de expertos estará encantado de ayudarte con tu próximo proyecto de pintura.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in animate-delay-400">
+                    <a href="tel:+522223074541" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-green-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-phone mr-3 group-hover:animate-wiggle"></i> Llámanos: +52 222 307 4541
+                    </a>
+                    <a href="mailto:berel.angelopolis@gmail.com" class="inline-flex items-center bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse"></i> Envíanos un Correo
+                    </a>
+                </div>
+
+                <div class="mt-12 text-gray-700 animate-fade-in animate-delay-600">
+                    <p class="text-xl font-semibold mb-2">Visítanos en nuestra sucursal:</p>
+                    <p class="text-lg">📍 Av Miguel Hidalgo 1205, San Juan Aquiahuac, 72775 San Pedro Cholula, Pue.</p>
+                    <a href="https://www.google.com/maps/place/Berel+Cholula/@19.0558718,-98.3243911,17z/data=!3m1!4b1!4m6!3m5!1s0x85cfc87f13b52b2f:0x6335193910ce208d!8m2!3d19.0558718!4d-98.3218162!16s%2Fg%2F11t60x496m?entry=ttu" target="_blank" rel="noopener" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 mt-4 inline-block group">
+                        Ver en Google Maps <i class="fas fa-map-marker-alt ml-2 group-hover:text-berelDarkRed transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. BEREL TEPONTLA FEEDBACK -->
+    <div id="tepontla-feedback-view" class="view">
+        <!-- Hero Section -->
+        <section class="bg-berelLightGray py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- Hero Text Content -->
+                <div class="order-1 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fade-in">
+                        ¿Cómo fue tu experiencia en <span class="text-berelRed">Berel Tepontla - Zerezotla</span>?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-200">
+                        Tu opinión nos ayuda a mejorar y a seguir ofreciéndote el mejor servicio en productos de pintura. Descubre calidad y atención experta en Tepontla - Zerezotla.
+                    </p>
+                    <a href="https://maps.app.goo.gl/GxFHBDwnmb4Ycv2L8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group animate-fade-in animate-delay-400">
+                        <i class="fas fa-star mr-3 text-berelAccentYellow group-hover:animate-pulse"></i> Dejar Reseña en Google
+                    </a>
+
+                    <!-- Rating Display -->
+                    <div class="mt-8 bg-white rounded-2xl p-4 inline-flex items-center shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <span class="text-berelAccentYellow text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <strong class="text-2xl font-bold text-gray-800">4.8 / 5</strong>
+                        <span class="text-gray-500 ml-4 hidden sm:inline">Calificación promedio</span>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="order-2 md:order-2">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765913751613-wmbty69.png" alt="Berel Tepontla Store" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in animate-delay-800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 text-center bg-white landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Por qué dejar tu reseña?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Tu opinión hace la diferencia y nos ayuda a crecer.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 justify-center">
+                    <!-- Card 1 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-400">
+                        <div class="w-16 h-16 rounded-xl bg-berelRed flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Ayudas a otros clientes</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Tu experiencia ayuda a otros a tomar mejores decisiones de compra.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-600">
+                        <div class="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Nos permite mejorar</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Identificamos áreas de mejora para ofrecerte un mejor servicio cada día.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-berelLightGray p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in animate-delay-800">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-3xl font-extrabold mb-6 mx-auto">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3">Solo toma 1 minuto</h3>
+                        <p class="text-gray-600 text-base md:text-lg">Es un proceso rápido, sencillo y muy valioso para todo nuestro equipo.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/GxFHBDwnmb4Ycv2L8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-edit mr-3 text-white group-hover:animate-bounce"></i> Dejar mi Reseña Ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="bg-gradient-to-br from-berelLightGray to-white py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl">
+                <!-- About Image -->
+                <div class="order-1 md:order-1">
+                    <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/773750d2-b33d-4966-a9f0-700dbc070c29/1766011914756-vocoho.png" alt="Team working at Berel Tepontla - Zerezotla" class="rounded-3xl shadow-2xl w-full object-cover transform hover:scale-105 transition-transform duration-500 animate-fade-in">
+                </div>
+                <!-- About Text Content -->
+                <div class="order-2 md:order-2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in animate-delay-200">
+                        Más que una tienda de pintura
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in animate-delay-400">
+                        Ofrecemos productos de alta calidad y un servicio personalizado que realmente hace la diferencia en cada proyecto.
+                    </p>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-600">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Amplia variedad</strong><br />
+                                <small class="text-gray-600">Encuentra todo lo que necesitas para tu proyecto en un solo lugar.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-700">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Asesoramiento experto</strong><br />
+                                <small class="text-gray-600">Nuestro equipo te guía en cada paso para resultados perfectos.</small>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 animate-fade-in animate-delay-800">
+                            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-berelAccentYellow flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong class="text-lg text-gray-900">Calidad garantizada</strong><br />
+                                <small class="text-gray-600">Solo trabajamos con las mejores marcas y productos duraderos.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 animate-fade-in animate-delay-900">
+                        <a href="#contact" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 group">
+                            Conoce más sobre nosotros <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16 bg-berelLightGray text-center landing-section">
+            <div class="container mx-auto max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    Lo que dicen nuestros clientes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in animate-delay-200">
+                    Historias reales de satisfacción y éxito con Berel Tepontla - Zerezotla.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-400">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "¡Excelente servicio! Encontré exactamente lo que buscaba y el personal fue muy amable y conocedor. ¡Volveré pronto!"
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914201952-x0mne.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover" />
+                            <div>
+                                <p class="font-bold text-gray-900">Juan López</p>
+                                <p class="text-sm text-gray-500">Diseñador de Interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-600">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "Siempre encuentro la mejor calidad de pintura en Berel Tepontla - Zerezotla. Mis proyectos lucen increíbles gracias a sus productos."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914191222-uh6qtx.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover" />
+                            <div>
+                                <p class="font-bold text-gray-900">María C. </p>
+                                <p class="text-sm text-gray-500">Contratista</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300 animate-fade-in animate-delay-800">
+                        <i class="fas fa-quote-left text-berelRed text-3xl mb-4"></i>
+                        <p class="text-gray-700 text-lg italic mb-6">
+                            "El asesoramiento que recibí fue invaluable. Me ayudaron a elegir los colores perfectos y los productos adecuados para mi casa."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/d4e0540f-4704-4f36-b9c7-a3a50574fd4d/1765914300207-mggag.jpeg" alt="Client Avatar" class="w-14 h-14 rounded-full mr-4 border-2 border-berelRed object-cover" />
+                            <div>
+                                <p class="font-bold text-gray-900">Ana Dávila</p>
+                                <p class="text-sm text-gray-500">Propietaria de Hogar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 animate-fade-in animate-delay-1000">
+                    <a href="https://maps.app.goo.gl/GxFHBDwnmb4Ycv2L8?g_st=iw" target="_blank" rel="noopener" class="inline-flex items-center bg-berelRed text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-berelDarkRed transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-google mr-3 text-white group-hover:animate-spin-slow"></i> Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-100 py-16 md:py-24 px-4 md:px-8 lg:px-16 landing-section">
+            <div class="container mx-auto text-center max-w-7xl">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                    ¿Necesitas una Cotización o Tienes Preguntas?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in animate-delay-200">
+                    Contáctanos hoy mismo y nuestro equipo de expertos estará encantado de ayudarte con tu próximo proyecto de pintura.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 animate-fade-in animate-delay-400">
+                    <a href="tel:+522223074541" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-green-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-phone mr-3 group-hover:animate-wiggle"></i> Llámanos: +52 222 307 4541
+                    </a>
+                    <a href="mailto:berel.angelopolis@gmail.com" class="inline-flex items-center bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 group">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse"></i> Envíanos un Correo
+                    </a>
+                </div>
+
+                <div class="mt-12 text-gray-700 animate-fade-in animate-delay-600">
+                    <p class="text-xl font-semibold mb-2">Visítanos en nuestra sucursal:</p>
+                    <address class="text-lg not-italic">📍 Av. 2 Poniente, C. 15 Nte. 1326, San Cristobal Tepontla, 72765 Cholula de Rivadavia, Pue.</address>
+                    <a href="https://maps.app.goo.gl/GxFHBDwnmb4Ycv2L8?g_st=iw" target="_blank" rel="noopener" class="text-berelRed font-bold text-lg hover:text-berelDarkRed transition-colors duration-300 mt-4 inline-block group">
+                        Ver en Google Maps <i class="fas fa-map-marker-alt ml-2 group-hover:text-berelDarkRed transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER GLOBAL (visible en todas las vistas) -->
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="container mx-auto max-w-7xl px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <p class="mb-4 md:mb-0 text-sm md:text-base">&copy; <span id="current-year"></span> Berel Angelópolis. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="https://www.facebook.com/BerelAngelopolisPuebla" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="https://www.instagram.com/pinturasbereloficial?igsh=MW81MDFkYnA1ODRoNw==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://wa.me/522223074541" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
         </div>
-        <p class="text-lg text-gray-700 mb-6 italic">"Necesitaba un color muy específico y lo encontré aquí. El personal me ayudó a elegir la mejor opción para mi proyecto y el resultado fue perfecto. ¡Muy recomendados!"</p>
-        <div class="flex items-center justify-center">
-          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635601358-yf35cu.jpeg" alt="Avatar de María González, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
-          <div>
-            <p class="font-semibold text-gray-900">María González</p>
-            <p class="text-sm text-gray-600">Diseñadora de Interiores</p>
-          </div>
-        </div>
-      </div>
+    </footer>
 
-      <!-- Testimonial Card 3 -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-300 animate-zoom-in animate-delay-400">
-        <div class="flex items-center justify-center mb-4">
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow mr-1"></i>
-          <i class="fas fa-star text-berelAccentYellow"></i>
-        </div>
-        <p class="text-lg text-gray-700 mb-6 italic">"Siempre compro mis pinturas aquí. La calidad es inigualable y la durabilidad de los productos Berel es lo que busco para mis trabajos de construcción."</p>
-        <div class="flex items-center justify-center">
-          <img src="https://zgnpmogdjnnhpwewavnr.supabase.co/storage/v1/object/public/project-images/7cccfd4a-df34-4220-a1be-211fb77397cd/1767635620559-lh5pnfq.jpeg" alt="Avatar de Carlos Ramírez, cliente de Berel Angelópolis" class="rounded-full w-12 h-12 object-cover mr-4 border-2 border-berelDarkRed">
-          <div>
-            <p class="font-semibold text-gray-900">Carlos Ramírez</p>
-            <p class="text-sm text-gray-600">Contratista</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- JavaScript for SPA Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const views = document.querySelectorAll('.view');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const goHomeBtn = document.getElementById('go-home');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Estado inicial
+            let currentView = 'home-view';
+            
+            // Inicializar con la vista home
+            showView('home-view');
+            
+            // Función para mostrar una vista
+            function showView(viewId) {
+                // Ocultar todas las vistas
+                views.forEach(view => {
+                    view.classList.remove('active');
+                    view.style.display = 'none';
+                });
+                
+                // Mostrar la vista seleccionada
+                const targetView = document.getElementById(viewId);
+                if (targetView) {
+                    targetView.style.display = 'block';
+                    setTimeout(() => {
+                        targetView.classList.add('active');
+                    }, 10);
+                    
+                    // Actualizar vista actual
+                    currentView = viewId;
+                    
+                    // Actualizar enlaces de navegación
+                    updateNavLinks(viewId);
+                    
+                    // Actualizar el historial del navegador
+                    updateBrowserHistory(viewId);
+                    
+                    // Disparar animaciones
+                    setTimeout(() => {
+                        const animatedElements = targetView.querySelectorAll('.animate-fade-in, .animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right, .animate-zoom-in');
+                        animatedElements.forEach(el => {
+                            el.style.animationPlayState = 'running';
+                            el.style.opacity = '1';
+                        });
+                    }, 100);
+                    
+                    // Scroll al top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+            
+            // Actualizar enlaces de navegación activos
+            function updateNavLinks(viewId) {
+                // Mapeo de vistas a enlaces de navegación
+                const viewToNavMap = {
+                    'home-view': 'home',
+                    'feedback-hub-view': 'feedback-hub',
+                    'contact-view': 'contact',
+                    'nino-poblano-feedback-view': 'feedback-hub',
+                    'angelopolis-feedback-view': 'feedback-hub',
+                    'zavaleta-feedback-view': 'feedback-hub',
+                    'cholula-feedback-view': 'feedback-hub',
+                    'tepontla-feedback-view': 'feedback-hub'
+                };
+                
+                const navTarget = viewToNavMap[viewId] || 'home';
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const view = link.getAttribute('data-view');
+                    if (view === navTarget) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Actualizar historial del navegador
+            function updateBrowserHistory(viewId) {
+                const viewName = viewId.replace('-view', '');
+                const pageTitle = getPageTitle(viewId);
+                
+                // Actualizar título de la página
+                document.title = pageTitle;
+                
+                // Actualizar URL sin recargar
+                const url = viewName === 'home' ? window.location.pathname : `#${viewName}`;
+                window.history.pushState({ viewId: viewId }, pageTitle, url);
+            }
+            
+            // Obtener título de página según vista
+            function getPageTitle(viewId) {
+                const titles = {
+                    'home-view': 'Berel Angelópolis',
+                    'feedback-hub-view': 'Tu Experiencia - Berel Angelópolis',
+                    'contact-view': 'Contacto - Berel Angelópolis',
+                    'nino-poblano-feedback-view': 'Berel Niño Poblano - Tu Experiencia Cuenta',
+                    'angelopolis-feedback-view': 'Berel Angelópolis - Tu Experiencia',
+                    'zavaleta-feedback-view': 'Berel Zavaleta - Tu Experiencia',
+                    'cholula-feedback-view': 'Berel San Pedro Cholula - Tu Experiencia',
+                    'tepontla-feedback-view': 'Berel Tepontla - Tu Experiencia'
+                };
+                return titles[viewId] || 'Berel Angelópolis';
+            }
+            
+            // Manejadores de eventos para navegación
+            document.querySelectorAll('[data-view]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const viewName = this.getAttribute('data-view');
+                    const viewId = `${viewName}-view`;
+                    
+                    if (viewId !== currentView) {
+                        showView(viewId);
+                    }
+                    
+                    // Cerrar menú móvil si está abierto
+                    closeMobileMenu();
+                });
+            });
+            
+            // Logo -> Home
+            if (goHomeBtn) {
+                goHomeBtn.addEventListener('click', function() {
+                    showView('home-view');
+                    closeMobileMenu();
+                });
+            }
+            
+            // Menú móvil
+            function closeMobileMenu() {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
+            }
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Cerrar menú al hacer clic en enlace
+                mobileMenu.querySelectorAll('[data-view]').forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+            }
+            
+            // Manejar botones atrás/adelante del navegador
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.viewId) {
+                    showView(event.state.viewId);
+                } else {
+                    // Si no hay estado, mostrar home
+                    showView('home-view');
+                }
+            });
+            
+            // Año en footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Observer para animaciones
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-<!-- BRANCHES FEEDBACK -->
-<section id="branches-feedback" class="py-16 lg:py-24 bg-berelDarkRed">
-  <div class="container mx-auto text-center max-w-7xl px-4">
-    <p class="text-white font-semibold text-sm uppercase mb-3 animate-fade-in-up">Tu Experiencia Cuenta</p>
-    <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-12 leading-tight animate-fade-in-up animate-delay-100">
-      Déjanos tu opinión en <span class="text-gray-900">Nuestras Sucursales</span>
-    </h2>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        entry.target.style.opacity = '1';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Branch Button 1 -->
-      <a href="https://berel-tu-experiencia-cuenta-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-200 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Niño Poblano</h3>
-        <p class="text-gray-700">Danos tu opinión</p>
-      </a>
-
-      <!-- Branch Button 2 -->
-      <a href="https://berel-angel-polis-tu-experiencia-cu.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Angelópolis</h3>
-        <p class="text-gray-700">Danos tu opinión</p>
-      </a>
-
-      <!-- Branch Button 3 -->
-      <a href="https://berel-zavaleta-tu-experiencia-cuent.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-400 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Zavaleta</h3>
-        <p class="text-gray-700">Danos tu opinión</p>
-      </a>
-
-      <!-- Branch Button 4 -->
-      <a href="https://berel-cholula-tu-voz-cuenta-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-500 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel San Pedro Cholula</h3>
-        <p class="text-gray-700">Danos tu opinión</p>
-      </a>
-
-      <!-- Branch Button 5 -->
-      <a href="https://berel-feedback-hub-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 group animate-zoom-in animate-delay-600 focus:outline-none focus:ring-2 focus:ring-berelRed">
-        <div class="text-berelDarkRed text-5xl mb-6 group-hover:scale-110 transition-transform duration-300"><i class="fas fa-store"></i></div>
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">Berel Tepontla</h3>
-        <p class="text-gray-700">Danos tu opinión</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-16 lg:py-24 bg-white">
-  <div class="container mx-auto text-center max-w-7xl px-4">
-    <p class="text-berelDarkRed font-semibold text-sm uppercase mb-3 animate-fade-in-up">Estamos Aquí para Ayudarte</p>
-    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-12 leading-tight animate-fade-in-up animate-delay-100">
-      Ponte en <span class="text-berelDarkRed">Contacto</span>
-    </h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <!-- Phone Contact -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-200">
-        <a href="tel:+522223074541" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
-          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-phone-alt"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900">Llámanos</h3>
-          <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">+52 222 307 4541</span>
-        </a>
-        <p class="text-gray-600 mt-2">Lunes a Viernes: 8:30 AM - 6 PM</p>
-        <p class="text-gray-600">Sábados: 9 AM - 3 PM</p>
-      </div>
-
-      <!-- Email Contact -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-300">
-        <a href="mailto:berel.angelopolis@gmail.com" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
-          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-envelope"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900">Envíanos un Correo</h3>
-          <span class="block text-berelGray text-lg hover:text-berelDarkRed transition duration-300 font-semibold">berel.angelopolis@gmail.com</span>
-        </a>
-        <p class="text-gray-600 mt-2">Respondemos en menos de 24 horas</p>
-      </div>
-
-      <!-- Location Contact -->
-      <div class="bg-berelLightGray p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:translate-y-[-5px] transition-all duration-300 animate-zoom-in animate-delay-400">
-        <a href="https://maps.app.goo.gl/6RPXLKn5kaddy3Tz5" target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus:ring-2 focus:ring-berelRed rounded-lg p-2 -m-2">
-          <div class="text-berelDarkRed text-5xl mb-6"><i class="fas fa-map-marker-alt"></i></div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900">Visítanos</h3>
-          <address class="not-italic text-berelGray text-lg font-semibold mb-4">
-  Calle Mira 213, L-12 Plaza, <br>
-  Carril a San Martinito, Paseos de San Andrés, <br>
-  72825 Puebla, Pue.
-</address>
-        </a>
-        <a href="https://maps.app.goo.gl/JoP84WNJFLZPNUDU6" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-berelDarkRed hover:underline transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed">
-          <i class="fas fa-directions mr-2"></i> Obtener Direcciones
-        </a>
-      </div>
-    </div>
-
-    <!-- Map Embed -->
-    <div class="mt-16 animate-zoom-in animate-delay-500">
-      <iframe
-  src="https://www.google.com/maps?q=Pinturas+Berel+Angelópolis+Puebla+2PJV+6M+Paseos+de+San+Andrés+San+Bernardino+Tlaxcalancingo+Calle+Mira+213+L-12+Plaza+Carril+a+San+Martinito+72825+Puebla&output=embed"
-  width="100%"
-  height="450"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-400 py-10 text-center">
-  <div class="container mx-auto max-w-7xl px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-      <p class="mb-4 md:mb-0 text-sm md:text-base">&copy; <span id="current-year"></span> Berel Angelópolis. Todos los derechos reservados.</p>
-      <div class="flex space-x-6">
-        <a href="https://www.facebook.com/share/1D4jHnxLvG/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
-        <a href="https://www.instagram.com/pinturasbereloficial?igsh=MW81MDFkYnA1ODRoNw==" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
-        <a href="https://wa.me/522223074541" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
-      </div>
-    </div>
-    <div class="text-sm text-gray-500 mt-4 border-t border-gray-800 pt-6">
-      <ul class="flex justify-center space-x-4 sm:space-x-6 flex-wrap gap-y-2">
-        <li><a href="#about" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Nosotros</a></li>
-        <li><a href="#testimonials" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Reseñas</a></li>
-        <li><a href="#branches-feedback" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Sucursales</a></li>
-        <li><a href="#contact" class="hover:text-berelDarkRed transition duration-300 focus:outline-none focus:ring-2 focus:ring-berelRed rounded px-1">Contacto</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-<!-- JavaScript for Mobile Menu and Footer Year -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-      // Change icon for accessibility feedback
-      const icon = mobileMenuButton.querySelector('i');
-      if (mobileMenu.classList.contains('hidden')) {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      } else {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times'); // Using 'times' for open, 'bars' for closed
-        mobileMenuButton.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    // Close mobile menu when a link is clicked
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        const icon = mobileMenuButton.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Update footer year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-  });
-</script>
+            document.querySelectorAll('.animate-fade-in, .animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right, .animate-zoom-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Manejar hash en URL al cargar
+            if (window.location.hash) {
+                const hash = window.location.hash.replace('#', '');
+                const viewId = `${hash}-view`;
+                if (document.getElementById(viewId)) {
+                    showView(viewId);
+                }
+            }
+        });
+    </script>
 </body>
-
 </html>
-
 
