@@ -197,7 +197,7 @@
             height: auto;
         }
 
-        /* ANIMACIONES PARA EL HERO - Brocha pintando */
+        /* ANIMACIONES PARA EL HERO - Brocha pintando SOLO detrás de Berel Angelópolis */
         .paint-container {
             position: absolute;
             top: 0;
@@ -206,17 +206,20 @@
             height: 100%;
             overflow: hidden;
             z-index: 1;
+            pointer-events: none; /* Para que no interfiera con clics */
         }
 
         .paint-track {
             position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.3);
+            top: 65%; /* Posicionado específicamente para estar detrás de Berel Angelópolis */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Ancho relativo al contenedor */
+            max-width: 800px; /* Máximo ancho para desktop */
+            height: 100px;
+            background: rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            border-radius: 50px;
         }
 
         .paint-fill {
@@ -232,10 +235,10 @@
 
         .paint-brush {
             position: absolute;
-            top: 50%;
-            left: 0;
+            top: 65%;
+            left: 50%;
             transform: translate(-100%, -50%);
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #E41E26;
             filter: drop-shadow(0 0 15px rgba(228, 30, 38, 0.8));
             z-index: 10;
@@ -250,7 +253,7 @@
 
         @keyframes brushMove {
             0% {
-                left: 0;
+                left: 50%;
                 transform: translate(-100%, -50%) rotate(-5deg);
             }
             15% {
@@ -272,8 +275,22 @@
                 transform: translate(-100%, -50%) rotate(-2deg);
             }
             100% {
-                left: 100%;
+                left: 50%;
                 transform: translate(0, -50%) rotate(0deg);
+            }
+        }
+
+        /* Media query específico para móvil */
+        @media (max-width: 768px) {
+            .paint-track {
+                width: 90%; /* Un poco más ancho en móvil */
+                height: 70px; /* Más delgado para móvil */
+                top: 60%; /* Ajustado para móvil */
+            }
+            
+            .paint-brush {
+                font-size: 2.5rem; /* Brocha más pequeña en móvil */
+                top: 60%;
             }
         }
 
@@ -315,7 +332,7 @@
             }
         }
 
-        /* Efectos de pintura salpicada */
+        /* Efectos de pintura salpicada (opcionales, puedes eliminarlos si no los quieres) */
         .paint-splatter {
             position: absolute;
             border-radius: 50%;
@@ -325,19 +342,19 @@
         }
 
         .splatter-1 {
-            width: 80px;
-            height: 80px;
-            top: 30%;
-            left: 15%;
+            width: 60px;
+            height: 60px;
+            top: 55%;
+            left: 45%;
             animation: fadeInSplatter 1s ease-out forwards;
             animation-delay: 1s;
         }
 
         .splatter-2 {
-            width: 120px;
-            height: 120px;
-            bottom: 25%;
-            right: 10%;
+            width: 80px;
+            height: 80px;
+            bottom: 40%;
+            right: 45%;
             animation: fadeInSplatter 1s ease-out forwards;
             animation-delay: 1.5s;
         }
@@ -348,9 +365,16 @@
                 transform: scale(0);
             }
             100% {
-                opacity: 0.5;
+                opacity: 0.3;
                 transform: scale(1);
             }
+        }
+
+        /* Ajuste para que el texto "Berel Angelópolis" esté bien posicionado sobre la animación */
+        h1 .text-line:last-child {
+            position: relative;
+            z-index: 25;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -392,10 +416,10 @@
     <!-- VISTA 1: HOME (Berel Angelópolis Principal) -->
     <!-- ============================================= -->
     <div id="home-view" class="view active">
-                              <!-- HERO -->
+        <!-- HERO -->
         <section class="relative flex items-center justify-center h-screen min-h-[600px] bg-gray-900 text-white overflow-hidden">
             
-            <!-- Contenedor de animación de pintura -->
+            <!-- Contenedor de animación de pintura - AHORA SOLO DETRÁS DE BEREL ANGELÓPOLIS -->
             <div class="paint-container">
                 <div class="paint-track">
                     <div class="paint-fill"></div>
@@ -403,7 +427,7 @@
                 <div class="paint-brush">
                     <i class="fas fa-paintbrush"></i>
                 </div>
-                <!-- Efectos de salpicadura -->
+                <!-- Efectos de salpicadura (opcionales) -->
                 <div class="paint-splatter splatter-1"></div>
                 <div class="paint-splatter splatter-2"></div>
             </div>
@@ -2184,6 +2208,7 @@
     </script>
 </body>
 </html>
+
 
 
 
