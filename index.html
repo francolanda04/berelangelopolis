@@ -197,111 +197,8 @@
             height: auto;
         }
 
-        /* ANIMACIONES PARA EL HERO - Brocha pintando SOLO detrás de Berel Angelópolis */
-        .paint-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-            z-index: 1;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Contenedor que envuelve SOLO las palabras Berel Angelópolis */
-        .berel-words-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Track de pintura - ahora absolutamente posicionado dentro del contenedor de palabras */
-        .paint-track {
-            position: absolute;
-            bottom: -15px; /* Justo debajo del texto */
-            left: 0;
-            width: 100%;
-            height: 8px; /* Altura de la línea roja */
-            background: transparent;
-            overflow: hidden;
-            border-radius: 4px;
-            z-index: 5;
-        }
-
-        .paint-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: #E41E26;
-            box-shadow: 0 0 10px #E41E26;
-            animation: paintFill 2.5s ease-in-out forwards;
-            animation-delay: 2.2s; /* Empieza después de que aparecen las palabras */
-        }
-
-        .paint-brush {
-            position: absolute;
-            bottom: -25px; /* Posicionado justo debajo de la línea */
-            left: 0;
-            transform: translateX(-100%);
-            font-size: 1.8rem;
-            color: #E41E26;
-            filter: drop-shadow(0 0 10px rgba(228, 30, 38, 0.8));
-            z-index: 10;
-            animation: brushMove 2.5s ease-in-out forwards;
-            animation-delay: 2.2s; /* Empieza después de que aparecen las palabras */
-        }
-
-        @keyframes paintFill {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        @keyframes brushMove {
-            0% {
-                left: 0;
-                transform: translateX(-100%) rotate(5deg);
-            }
-            20% {
-                transform: translateX(-80%) rotate(-5deg);
-            }
-            40% {
-                transform: translateX(-60%) rotate(8deg);
-            }
-            60% {
-                transform: translateX(-40%) rotate(-3deg);
-            }
-            80% {
-                transform: translateX(-20%) rotate(4deg);
-            }
-            95% {
-                transform: translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                left: 100%;
-                transform: translateX(0) rotate(0deg);
-                opacity: 0; /* El pincel desaparece */
-            }
-        }
-
-        /* Media query específico para móvil */
-        @media (max-width: 768px) {
-            .paint-track {
-                height: 6px; /* Línea más delgada en móvil */
-                bottom: -10px;
-            }
-            
-            .paint-brush {
-                font-size: 1.4rem; /* Brocha más pequeña en móvil */
-                bottom: -20px;
-            }
-        }
-
+        /* ANIMACIONES PARA EL HERO - Brocha pintando JUSTO detrás de Berel Angelópolis */
+        
         /* Animaciones de texto */
         .text-reveal-container {
             position: relative;
@@ -340,15 +237,94 @@
             }
         }
 
-        /* Eliminamos los efectos de salpicadura */
-        .paint-splatter {
-            display: none;
-        }
-
         /* Estilo para el contenedor de Berel Angelópolis */
         .berel-highlight {
             position: relative;
             display: inline-block;
+        }
+
+        /* Track de pintura - ahora absolutamente posicionado dentro del contenedor de palabras */
+        .paint-track {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: transparent;
+            overflow: hidden;
+            border-radius: 4px;
+            z-index: 5;
+        }
+
+        .paint-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #E41E26;
+            box-shadow: 0 0 10px #E41E26;
+            animation: paintFill 2.2s ease-in-out forwards;
+            animation-delay: 2.3s;
+        }
+
+        .paint-brush {
+            position: absolute;
+            bottom: -18px;
+            left: -5px;
+            font-size: 1.8rem;
+            color: #E41E26;
+            filter: drop-shadow(0 0 10px rgba(228, 30, 38, 0.8));
+            z-index: 10;
+            animation: brushMove 2.2s ease-in-out forwards;
+            animation-delay: 2.3s;
+            transform: translateX(-100%);
+        }
+
+        @keyframes paintFill {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes brushMove {
+            0% {
+                transform: translateX(-100%) rotate(5deg);
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(-80%) rotate(-5deg);
+            }
+            40% {
+                transform: translateX(-60%) rotate(8deg);
+            }
+            60% {
+                transform: translateX(-40%) rotate(-3deg);
+            }
+            80% {
+                transform: translateX(-20%) rotate(4deg);
+                opacity: 1;
+            }
+            95% {
+                transform: translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* Media query específico para móvil */
+        @media (max-width: 768px) {
+            .paint-track {
+                height: 6px;
+                bottom: -8px;
+            }
+            
+            .paint-brush {
+                font-size: 1.4rem;
+                bottom: -15px;
+            }
         }
     </style>
 </head>
@@ -421,14 +397,12 @@
                                 <span class="text-word word-5">Berel</span>
                                 <span class="text-word word-6 ml-2">Angelópolis</span>
                                 
-                                <!-- Contenedor de animación específico para Berel Angelópolis -->
-                                <span class="paint-container">
-                                    <span class="paint-track">
-                                        <span class="paint-fill"></span>
-                                    </span>
-                                    <span class="paint-brush">
-                                        <i class="fas fa-paintbrush"></i>
-                                    </span>
+                                <!-- Elementos de animación directamente aquí -->
+                                <span class="paint-track">
+                                    <span class="paint-fill"></span>
+                                </span>
+                                <span class="paint-brush">
+                                    <i class="fas fa-paintbrush"></i>
                                 </span>
                             </span>
                         </span>
@@ -455,6 +429,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- ABOUT US - Conócenos -->
         <section class="py-16 lg:py-24 bg-white">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl px-4">
@@ -2181,6 +2156,7 @@
     </script>
 </body>
 </html>
+
 
 
 
