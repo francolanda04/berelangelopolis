@@ -197,10 +197,91 @@
             height: auto;
         }
 
-        /* Animaciones de texto */
+        /* ANIMACIÓN PRINCIPAL - Pincel y línea en MOVIMIENTO CONTINUO */
+        .berel-highlight {
+            position: relative;
+            display: inline-block;
+            z-index: 5;
+            padding: 0 10px; /* Espacio para la línea en los extremos */
+        }
+
+        /* Contenedor de la línea de pintura - MISMA POSICIÓN en todas las vistas */
+        .paint-line-container {
+            position: absolute;
+            top: 52%;
+            left: -8px;
+            right: -8px;
+            height: 0.45em;
+            transform: translateY(-50%);
+            z-index: -1;
+            overflow: hidden;
+            border-radius: 30px;
+            background: transparent;
+        }
+
+        /* La línea de pintura que aparece de forma CONTINUA detrás del pincel */
+        .paint-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: #E41E26;
+            box-shadow: 0 0 35px rgba(228, 30, 38, 1);
+            border-radius: 30px;
+            animation: paintContinuous 3s linear forwards;
+            animation-delay: 2.0s;
+        }
+
+        @keyframes paintContinuous {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Pincel que se mueve de forma CONTINUA de izquierda a derecha */
+        .paint-brush {
+            position: absolute;
+            top: 52%;
+            left: 0%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            font-size: 2.4rem;
+            color: #E41E26;
+            filter: drop-shadow(0 0 30px rgba(228, 30, 38, 1));
+            z-index: 0;
+            animation: brushContinuous 3s linear forwards;
+            animation-delay: 2.0s;
+            pointer-events: none;
+            text-shadow: 0 0 25px rgba(228, 30, 38, 0.9);
+            opacity: 0;
+        }
+
+        @keyframes brushContinuous {
+            0% {
+                left: 0%;
+                transform: translate(-50%, -50%) rotate(-8deg);
+                opacity: 0;
+            }
+            2% {
+                opacity: 1;
+            }
+            98% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                transform: translate(-50%, -50%) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animaciones de texto (revelado) */
         .text-reveal-container {
             position: relative;
-            z-index: 20;
+            z-index: 10;
         }
 
         .text-line {
@@ -235,92 +316,68 @@
             }
         }
 
-        /* Estilo para el contenedor de Berel Angelópolis - ESTO ES CRÍTICO */
-        .berel-highlight {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Track de pintura - ahora absolutamente posicionado dentro del contenedor de palabras */
-        .paint-track {
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: transparent;
-            overflow: hidden;
-            border-radius: 4px;
-            z-index: 5;
-        }
-
-        .paint-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: #E41E26;
-            box-shadow: 0 0 15px #E41E26, 0 0 30px #E41E26;
-            animation: paintFill 2.5s ease-in-out forwards;
-            animation-delay: 2.3s;
-        }
-
-        .paint-brush {
-            position: absolute;
-            bottom: -16px;
-            left: -5px;
-            font-size: 1.8rem;
-            color: #E41E26;
-            filter: drop-shadow(0 0 15px rgba(228, 30, 38, 0.9));
-            z-index: 10;
-            animation: brushMove 2.5s ease-in-out forwards;
-            animation-delay: 2.3s;
-            transform: translateX(-100%);
-        }
-
-        @keyframes paintFill {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        @keyframes brushMove {
-            0% {
-                transform: translateX(-100%) rotate(5deg);
-                opacity: 1;
-            }
-            15% { transform: translateX(-80%) rotate(-5deg); }
-            30% { transform: translateX(-60%) rotate(8deg); }
-            45% { transform: translateX(-40%) rotate(-3deg); }
-            60% { transform: translateX(-20%) rotate(4deg); }
-            75% { transform: translateX(0) rotate(0deg); }
-            90% { 
-                transform: translateX(80%) rotate(-2deg);
-                opacity: 1;
-            }
-            100% { 
-                transform: translateX(100%) rotate(0deg);
-                opacity: 0;
-            }
-        }
-
-        /* Media query específico para móvil */
+        /* Ajustes responsivos - MANTIENE LA MISMA POSICIÓN RELATIVA */
         @media (max-width: 768px) {
-            .paint-track {
-                height: 6px;
-                bottom: -6px;
+            .berel-highlight {
+                padding: 0 6px;
+            }
+            
+            .paint-line-container {
+                height: 0.35em;
+                top: 52%;
+                left: -5px;
+                right: -5px;
             }
             
             .paint-brush {
-                font-size: 1.4rem;
-                bottom: -14px;
+                font-size: 1.8rem;
+                top: 52%;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .paint-line-container {
+                height: 0.3em;
+                top: 52%;
+            }
+            
+            .paint-brush {
+                font-size: 1.5rem;
+                top: 52%;
+            }
+        }
+        
+        /* Para pantallas grandes */
+        @media (min-width: 1200px) {
+            .paint-line-container {
+                height: 0.5em;
+                top: 52%;
+            }
+            
+            .paint-brush {
+                font-size: 2.8rem;
+                top: 52%;
+            }
+        }
+        
+        /* Para pantallas extra grandes */
+        @media (min-width: 1536px) {
+            .paint-line-container {
+                height: 0.55em;
+                top: 52%;
+            }
+            
+            .paint-brush {
+                font-size: 3.2rem;
+                top: 52%;
             }
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
 
-    <!-- NAVBAR PRINCIPAL (para todas las vistas) -->
+    <!-- NAVBAR PRINCIPAL -->
     <nav id="main-navbar" class="bg-white p-4 shadow-lg sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center max-w-7xl px-4">
             <!-- Logo como enlace a home -->
@@ -329,7 +386,7 @@
                 <span class="text-xl sm:text-2xl font-extrabold text-gray-900 hidden sm:block">Berel Angelópolis</span>
             </button>
 
-            <!-- Desktop Navigation - TRES OPCIONES AL MISMO NIVEL -->
+            <!-- Desktop Navigation -->
             <ul class="hidden lg:flex space-x-8 font-semibold text-lg">
                 <li><button data-view="home" class="text-gray-700 hover:text-berelRed transition duration-300 py-2 px-1 nav-link active">Inicio</button></li>
                 <li><button data-view="feedback-hub" class="text-gray-700 hover:text-berelRed transition duration-300 py-2 px-1 nav-link">Tu Experiencia</button></li>
@@ -353,16 +410,16 @@
     </nav>
 
     <!-- ============================================= -->
-    <!-- VISTA 1: HOME (Berel Angelópolis Principal) -->
+    <!-- VISTA HOME -->
     <!-- ============================================= -->
     <div id="home-view" class="view active">
         <!-- HERO -->
         <section class="relative flex items-center justify-center h-screen min-h-[600px] bg-gray-900 text-white overflow-hidden">
             
-            <!-- Overlay para contraste -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-5"></div>
+            <!-- Overlay más oscuro para que resalte el rojo -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 z-5"></div>
 
-            <!-- Botón de WhatsApp flotante superior derecha -->
+            <!-- Botón de WhatsApp flotante -->
             <div class="absolute top-6 right-6 z-40 animate-fade-in animate-delay-1000">
                 <a href="https://wa.me/522223074541" target="_blank" rel="noopener" 
                    class="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl group">
@@ -383,15 +440,18 @@
                             <span class="text-word word-4 ml-2">con</span>
                         </span>
                         <span class="text-line block">
-                            <span class="berel-highlight" style="position: relative; display: inline-block;">
+                            <!-- Contenedor que abarca TODO "Berel Angelópolis" -->
+                            <span class="berel-highlight">
                                 <span class="text-word word-5">Berel</span>
                                 <span class="text-word word-6 ml-2">Angelópolis</span>
                                 
-                                <!-- Elementos de animación directamente aquí con position absolute -->
-                                <span style="position: absolute; bottom: -8px; left: 0; width: 100%; height: 8px; background: transparent; overflow: hidden; border-radius: 4px; z-index: 5;">
-                                    <span style="position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #E41E26; box-shadow: 0 0 15px #E41E26; animation: paintFill 2.5s ease-in-out forwards; animation-delay: 2.3s;"></span>
+                                <!-- Línea de pintura CONTINUA detrás del pincel -->
+                                <span class="paint-line-container">
+                                    <span class="paint-line"></span>
                                 </span>
-                                <span style="position: absolute; bottom: -16px; left: -5px; font-size: 1.8rem; color: #E41E26; filter: drop-shadow(0 0 15px rgba(228, 30, 38, 0.9)); z-index: 10; animation: brushMove 2.5s ease-in-out forwards; animation-delay: 2.3s; transform: translateX(-100%);">
+                                
+                                <!-- Pincel con movimiento CONTINUO de izquierda a derecha -->
+                                <span class="paint-brush">
                                     <i class="fas fa-paintbrush"></i>
                                 </span>
                             </span>
@@ -419,7 +479,100 @@
                 </div>
             </div>
         </section>
-        
+    </div>
+
+    <!-- ============================================= -->
+    <!-- VISTA FEEDBACK HUB (placeholder) -->
+    <!-- ============================================= -->
+    <div id="feedback-hub-view" class="view">
+        <div class="h-screen flex items-center justify-center bg-gray-100">
+            <h2 class="text-3xl font-bold text-berelRed">Feedback Hub - Próximamente</h2>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- VISTA CONTACTO (placeholder) -->
+    <!-- ============================================= -->
+    <div id="contact-view" class="view">
+        <div class="h-screen flex items-center justify-center bg-gray-100">
+            <h2 class="text-3xl font-bold text-berelRed">Contacto - Próximamente</h2>
+        </div>
+    </div>
+
+    <script>
+        // SPA Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const views = {
+                home: document.getElementById('home-view'),
+                'feedback-hub': document.getElementById('feedback-hub-view'),
+                contact: document.getElementById('contact-view')
+            };
+            
+            const navLinks = document.querySelectorAll('[data-view]');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const goHomeButton = document.getElementById('go-home');
+            
+            // Función para cambiar de vista
+            function showView(viewId) {
+                // Ocultar todas las vistas
+                Object.values(views).forEach(view => {
+                    if (view) view.classList.remove('active');
+                });
+                
+                // Mostrar la vista seleccionada
+                if (views[viewId]) {
+                    views[viewId].classList.add('active');
+                }
+                
+                // Actualizar clase activa en navegación
+                navLinks.forEach(link => {
+                    const linkView = link.getAttribute('data-view');
+                    if (linkView === viewId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Cerrar menú móvil si está abierto
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton?.setAttribute('aria-expanded', 'false');
+                }
+            }
+            
+            // Event listeners para botones de navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const viewId = this.getAttribute('data-view');
+                    showView(viewId);
+                });
+            });
+            
+            // Botón de home
+            if (goHomeButton) {
+                goHomeButton.addEventListener('click', function() {
+                    showView('home');
+                });
+            }
+            
+            // Menú móvil toggle
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+                    this.setAttribute('aria-expanded', !expanded);
+                    mobileMenu?.classList.toggle('hidden');
+                });
+            }
+            
+            // Mostrar vista inicial (home)
+            showView('home');
+        });
+    </script>
+</body>
+</html>
         <!-- ABOUT US - Conócenos -->
         <section class="py-16 lg:py-24 bg-white">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl px-4">
